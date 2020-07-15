@@ -3,6 +3,7 @@ const canvas = document.querySelector('#etch-a-sketch');
 const ctx = canvas.getContext('2d');
 const shake = document.querySelector('.shake');
 const MOVE_AMOUNT = 20;
+const commands = document.querySelectorAll('.command');
 
 // setup our canvas for drawing
 const { width, height } = canvas; // object destructuring (ES6)
@@ -54,6 +55,8 @@ const draw = ({ key }) => {
 	ctx.stroke();
 };
 
+
+
 // write a handler for the keys (switch statement)
 const handleKey = e => {
 	if (e.key.includes('Arrow')) {
@@ -61,6 +64,7 @@ const handleKey = e => {
 		draw({ key: e.key });
 	}
 };
+
 // clear / shake function
 const clearCanvas = () => {
   canvas.classList.add('shake');
@@ -73,7 +77,13 @@ const clearCanvas = () => {
   );
 };
 
+const handleButtons = (event) => {
+  draw({key: event.target.dataset.command});
+
+}
 
 // listen for arrow keys
 window.addEventListener('keydown', handleKey);
 shake.addEventListener('click', clearCanvas);
+commands.forEach(button => button.addEventListener('click', handleButtons));
+

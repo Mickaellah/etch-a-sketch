@@ -12,6 +12,10 @@
 			<canvas width="1600" height="1000" id="etch-a-sketch"></canvas>
 			<div class="buttons">
 				<button class="shake">Shake!</button>
+				<button data-command='ArrowUp' class="shake command">↑</button>
+				<button data-command='ArrowDown' class="shake command">↓</button>
+				<button data-command='ArrowLeft' class="shake command">←</button>
+				<button data-command='ArrowRight' class="shake command">→</button>
 			</div>
 		</div>
 		<script src="./script.js"></script>
@@ -38,6 +42,10 @@
 
 			canvas.shake {
 				animation: shake 0.5s linear 1;
+			}
+
+			.command {
+				width: 8rem;
 			}
 
 			@keyframes shake {
